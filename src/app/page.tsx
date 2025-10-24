@@ -1,4 +1,4 @@
-import ListaFilmes from "./components/listaFilmes";
+import ListaFilmes from "./components/ListaFilmes";
 
 export default function Home() {
   return (
