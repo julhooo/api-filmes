@@ -7,6 +7,8 @@ import Header from '../components/Header';
 import Rodape from '../components/Rodape';
 
 export default function WatchlistPage() {
+
+    // Update da watchlist, salvando em localstorage para não se perder mesmo com a navegação de páginas
     const [watchlist, setWatchlist] = useState<FilmeType[]>(() => {
         if (typeof window !== 'undefined') {
             const saved = localStorage.getItem('filmesWatchlist');
@@ -19,6 +21,7 @@ export default function WatchlistPage() {
         localStorage.setItem('filmesWatchlist', JSON.stringify(watchlist));
     }, [watchlist]);
 
+    // Quando o usuário clicar no filme significa que já assistiu, então remove da lista
     const removeFromWatchlist = (filme: FilmeType) => {
         setWatchlist(prev => prev.filter(f => f.id !== filme.id));
     };

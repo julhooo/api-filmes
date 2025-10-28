@@ -3,15 +3,18 @@
 import './index.scss';
 import { FilmeType } from '@/app/types/movie';
 
+// Tipando
 type SelecionadosProps = {
     selecionados: FilmeType[];
     toggleSelecionado: (filme: FilmeType) => void;
     limparSelecionados: () => void;
 };
 
+// Recebe o array de filmes selecionados para apresentar na tela
 export default function Selecionados({ selecionados, toggleSelecionado, limparSelecionados }: SelecionadosProps) {
     if (selecionados.length === 0) return null;
 
+    // Manda para a watchlist
     const handleAdicionarWatchlist = () => {
         const watchlist: FilmeType[] = JSON.parse(localStorage.getItem('filmesWatchlist') || '[]');
         const novos = selecionados.filter(f => !watchlist.some(w => w.id === f.id));

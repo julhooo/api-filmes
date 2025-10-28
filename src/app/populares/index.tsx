@@ -13,6 +13,7 @@ export default function Popular() {
     const [filmes, setFilmes] = useState<FilmeType[]>([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
+    // Manter selecionados durante navegação pelas páginas
     const [selecionados, setSelecionados] = useState<FilmeType[]>(() => {
         if (typeof window !== 'undefined') {
             const saved = localStorage.getItem('filmesSelecionados');
@@ -24,12 +25,14 @@ export default function Popular() {
     const getFilmesPopulares = async (pagina: number = 1) => {
         setLoading(true);
         try {
+            // URL para filmes trending
             const url = 'https://api.themoviedb.org/3/trending/movie/day';
             const params = {
                 api_key: '',
                 language: 'pt-BR',
                 page: pagina,
             };
+            // Mesma lógica vista em /components/ListaFilme
             const response = await axios.get<{ results: FilmeType[] }>(url, { params });
             setFilmes(prev => pagina === 1 ? response.data.results : [...prev, ...response.data.results]);
         } catch (err) {
@@ -39,8 +42,10 @@ export default function Popular() {
         }
     };
 
+    // Filtra duplicatas
     const filmesUnicos = Array.from(new Map(filmes.map(f => [f.id, f])).values());
 
+    // Verifica se o filme já estava selecionado antes de inserir no array
     const toggleSelecionado = (filme: FilmeType) => {
         if (selecionados.some(s => s.id === filme.id)) {
             setSelecionados(prev => prev.filter(s => s.id !== filme.id));
@@ -53,6 +58,7 @@ export default function Popular() {
         }
     };
 
+    // Scroll infinito, sempre que atualiza página chama o get
     useEffect(() => {
         const handleScroll = () => {
             if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 && !loading) {
@@ -67,10 +73,12 @@ export default function Popular() {
         getFilmesPopulares(page);
     }, [page]);
 
+    // Combinado com o código da linha 17
     useEffect(() => {
         localStorage.setItem('filmesSelecionados', JSON.stringify(selecionados));
     }, [selecionados]);
 
+    // Mesma lógica de /components/ListaFilmes
     return (
         <div>
             <Header />

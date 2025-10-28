@@ -4,12 +4,15 @@ import { useRouter } from 'next/navigation';
 import './index.scss';
 
 export default function Header() {
+    // Para mexer com as rotas
     const router = useRouter();
 
+    // Quando clicar no título da página -> retorna a home
     const handleBackClick = () => {
-        router.back();
+        router.push('/');
     };
 
+    // Ir para watchlist
     const handleWatchlistClick = () => {
         router.push('/watchlist');
     };

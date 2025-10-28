@@ -13,6 +13,7 @@
     position: relative;
     width: 60%;
     margin: 20px auto;
+    gap: 5px;
 
     .botao-populares {
         padding: 8px 12px;
@@ -30,6 +31,7 @@
 
     .botao-embreve {
         padding: 8px 12px;
+        white-space: nowrap;
         border-radius: 10px;
         border: none;
         background-color: #0070f3;

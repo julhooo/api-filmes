@@ -1,6 +1,7 @@
 import { FilmeType } from '@/app/types/movie';
 import './index.scss';
 
+// Tipa os parâmetros recebidos
 export interface Props {
     filme: FilmeType
     selecionado: boolean
@@ -10,11 +11,13 @@ export interface Props {
 export default function CardFilmes(props: Props) {
     const filme = props.filme;
 
+    //  
     const handleClick = () => {
         props.onToggle(filme);
     };
 
     return (
+        // Define a visualização dos cards
         <li className={`card-filme ${props.selecionado ? 'selecionado' : ''}`} onClick={handleClick}>
             <div className='filme-poster'>
                 <img
