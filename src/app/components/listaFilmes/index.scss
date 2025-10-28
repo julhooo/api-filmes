@@ -1,4 +1,4 @@
-.lista-filmes{
+.lista-filmes {
     display: grid;
     padding: 5%;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -8,9 +8,39 @@
 }
 
 .barra-busca {
+    display: flex;
+    align-items: center;
     position: relative;
     width: 60%;
     margin: 20px auto;
+
+    .botao-populares {
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: none;
+        background-color: #0070f3;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+            background-color: #005bb5;
+        }
+    }
+
+    .botao-embreve {
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: none;
+        background-color: #0070f3;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+
+        &:hover {
+            background-color: #005bb5;
+        }
+    }
 
     input {
         width: 100%;
@@ -43,46 +73,10 @@
     }
 
     .botao-fechar {
-        right: 40px; // fica antes da lupa
+        right: 40px;
     }
 
     .botao-pesquisar {
         right: 10px;
     }
 }
-
-.selecionados-container {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    margin: 0 auto 20px auto;
-    width: 100%;
-    overflow-x: auto;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-
-    .selecionado-poster {
-        flex: 0 0 auto;
-        width: 80px;
-        height: 120px;
-        border-radius: 8px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
-
-        &:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-}
-
