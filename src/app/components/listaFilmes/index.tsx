@@ -61,7 +61,7 @@ export default function ListaFilmes() {
                 return unicos;
             });
         } catch (error) {
-            console.error('Erro ao buscar filmes:', error);
+            console.error('Erro ao buscar', error);
         } finally {
             setLoading(false);
         }

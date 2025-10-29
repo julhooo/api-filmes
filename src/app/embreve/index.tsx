@@ -36,7 +36,7 @@ export default function EmBreve() {
             const response = await axios.get<{ results: FilmeType[] }>(url, { params });
             setFilmes(prev => pagina === 1 ? response.data.results : [...prev, ...response.data.results]);
         } catch (err) {
-            console.error('Erro ao buscar filmes populares:', err);
+            console.error('Erro ao buscar', err);
         } finally {
             setLoading(false);
         }
